@@ -1,0 +1,29 @@
+---
+layout: default
+title: topics
+permalink: /topics/
+---
+
+<section class="page-intro">
+  <div class="eyebrow">topics</div>
+  <h1 class="page-title">by <span class="italic">subject</span><span class="dot">.</span></h1>
+  <p class="page-lede">
+    same notes, grouped by topic.
+    for when you want to follow one thread without scrolling everything.
+  </p>
+</section>
+
+<section class="topics-list">
+  {% assign topics = site.posts | map: "topic" | uniq | compact | sort %}
+  {% for topic in topics %}
+    {% assign topic_posts = site.posts | where: "topic", topic %}
+    <a href="{{ '/topics/' | append: topic | append: '/' | relative_url }}" class="topic-card">
+      <h2 class="topic-name">{{ topic }}</h2>
+      <p class="topic-count">{{ topic_posts.size }} {% if topic_posts.size == 1 %}entry{% else %}entries{% endif %}</p>
+    </a>
+  {% endfor %}
+
+  {% if topics.size == 0 %}
+    <p class="empty">no topics yet. soon.</p>
+  {% endif %}
+</section>

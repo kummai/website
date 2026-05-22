@@ -1,0 +1,28 @@
+title: kummai
+description: Thinking AI out loud, so you don't have to start from zero.
+url: https://kummai.in
+
+# Jekyll settings
+markdown: kramdown
+permalink: /notes/:year/:month/:day/:title/
+
+# Default front matter for posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "note"
+
+# Collections
+collections:
+  topics:
+    output: true
+    permalink: /topics/:name/
+
+# What Jekyll should ignore when building
+exclude:
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock

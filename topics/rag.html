@@ -1,0 +1,33 @@
+---
+layout: default
+title: rag
+permalink: /topics/rag/
+---
+
+<section class="page-intro">
+  <div class="eyebrow">topic</div>
+  <h1 class="page-title">rag<span class="dot">.</span></h1>
+  <p class="page-lede">
+    everything i've written about RAG so far.
+    oldest first, so you can follow the journey.
+  </p>
+</section>
+
+<section class="entries">
+  {% assign rag_posts = site.posts | where: "topic", "rag" | sort: "date" %}
+  {% for post in rag_posts %}
+    <a href="{{ post.url | relative_url }}" class="entry-card">
+      <div class="entry-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+      </div>
+      <h2 class="entry-title">{{ post.title }}</h2>
+      {% if post.excerpt %}
+        <p class="entry-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </a>
+  {% endfor %}
+
+  {% if rag_posts.size == 0 %}
+    <p class="empty">no entries yet. soon.</p>
+  {% endif %}
+</section>

@@ -1,0 +1,36 @@
+---
+layout: default
+title: notes
+permalink: /notes/
+---
+
+<section class="page-intro">
+  <div class="eyebrow">notes</div>
+  <h1 class="page-title">thinking <span class="italic">out loud</span><span class="dot">.</span></h1>
+  <p class="page-lede">
+    daily entries. what i learned, what i didn't, what made me curious.
+    newest first.
+  </p>
+</section>
+
+<section class="entries">
+  {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" class="entry-card">
+      <div class="entry-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        {% if post.topic %}
+          <span class="sep">·</span>
+          <span class="topic-tag">{{ post.topic }}</span>
+        {% endif %}
+      </div>
+      <h2 class="entry-title">{{ post.title }}</h2>
+      {% if post.excerpt %}
+        <p class="entry-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </a>
+  {% endfor %}
+
+  {% if site.posts.size == 0 %}
+    <p class="empty">no entries yet. soon.</p>
+  {% endif %}
+</section>

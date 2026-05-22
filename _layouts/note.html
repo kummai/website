@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<article class="note">
+  <div class="note-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    {% if page.topic %}
+    <span class="sep">·</span>
+    <a href="{{ '/topics/' | append: page.topic | append: '/' | relative_url }}" class="topic-tag">{{ page.topic }}</a>
+    {% endif %}
+  </div>
+
+  <h1 class="note-title">{{ page.title }}</h1>
+
+  <div class="note-body">
+    {{ content }}
+  </div>
+
+  <nav class="note-nav">
+    <a href="{{ '/notes/' | relative_url }}">← all notes</a>
+  </nav>
+</article>
